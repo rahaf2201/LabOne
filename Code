@@ -1,0 +1,77 @@
+import java.util.Scanner;
+
+public class PasswordGeneration {
+
+    public static void main(String[] args) {
+
+        Scanner input = new Scanner(System.in);
+
+        String password = "";
+        char c;
+        int size = 0;
+        String letters = new
+                String("&*()789FGHIJKabcdefghijklmLMNO^|{]}PQRSTU!@#$%VWXYZ123456nopqrstuvwxyzABCDE");
+
+        // A second String which contains id and name
+
+        String nameID = "RahafAdamAlnuaimi1074835";
+
+        // A loop which allows user to generate passwords as many times as he wants
+
+        while (true) {
+
+            // Asking for number of passwords to generate
+
+            System.out.print("How many passwords would like to generate: ");
+            int num = input.nextInt();
+
+            // Asking for length of password to generate
+
+            System.out.print("What is the length of password would you like to generate: ");
+            int lengthOfPasswords = input.nextInt();
+
+            // Make sure that size of password does not exceed 18 letters long
+
+            while (lengthOfPasswords > 18) {
+                System.out.println("The size of password cannot exceed 18");
+                System.out.print("What is the length of password would you like to generate: ");
+                lengthOfPasswords = input.nextInt();
+            }
+            System.out.println();
+
+            // Printing message for number of passwords to generate
+
+            System.out.println("The following " + num + " are now generated");
+            System.out.println("______________________________________________________");
+
+            for (int i=0; i<num; i++) {
+
+                size = 0;
+                password = "";
+
+                while (size < lengthOfPasswords) {
+
+                    // Selecting random character from the list
+
+                    c = letters.charAt((int)(Math.random()*(letters.length())));
+
+                    password += Character.toString(c);
+
+                    size++;
+                }
+                System.out.println(password);
+            }
+
+            // Asking for next set of passwords
+
+            System.out.print("\nWould you like to generate another set of passwords (Y/N): ");
+            char opt = input.next().charAt(0);
+
+            if (opt == 'N' || opt == 'n')
+                break;
+
+            System.out.println();
+        }
+        System.out.println("\t\t\t\t\tThank you");
+    }
+}
